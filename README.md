@@ -1,3 +1,4 @@
+[![CI](https://github.com/rostorare/restaurant_fe/actions/workflows/ci.yml/badge.svg)](https://github.com/rostorare/restaurant_fe/actions/workflows/ci.yml)
 # restaurant_fe
 
 ## Project setup
