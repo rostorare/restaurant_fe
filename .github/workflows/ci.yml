@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: ./npm.bat run unit:test --info --stacktrace
+        run: npm run unit:test
