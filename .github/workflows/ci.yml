@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
       - name: Run tests
-        run: npm run example.spec.js
+        run: npm run-script test:unit
