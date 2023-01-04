@@ -1,13 +1,15 @@
 <template>
   <navbar>schinken</navbar>
+  <Gericht />
   <router-view></router-view>
  </template>
 <script>
 import Navbar from '@/components/Navbar'
+import Gericht from '@/components/Gericht'
 
 export default {
   name: 'App',
-  components: { Navbar }
+  components: { Navbar, Gericht }
 }
 </script>
 
