@@ -1,4 +1,4 @@
-<template>
+<template xmlns:onclick="http://www.w3.org/1999/xhtml">
   <div class = "container">
     <h1 class = "text-center"> Gerichte </h1>
     <table class = "table table-striped">
@@ -18,6 +18,7 @@
       </tbody>
     </table>
   </div>
+  <button type="button" v-on:click="getGerichte" class="btn btn-primary">Get</button>
 </template>
 
 <script>
