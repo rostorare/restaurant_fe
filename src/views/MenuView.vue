@@ -1,13 +1,17 @@
 <template>
-<h1>gerichte </h1>
+  <div>
+    <GerichtComponent />
+  </div>
 </template>
 
 <script>
+// @ is an alias to /src
+import GerichtComponent from '@/components/GerichtComponent'
+
 export default {
-  name: 'MenuView.vue'
+  name: 'MenuView',
+  components: {
+    GerichtComponent
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
