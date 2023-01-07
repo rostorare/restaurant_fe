@@ -20,7 +20,8 @@
         </div>
       </div>
       <hr>
-      <button type="submit" class="btn btn-primary" :class="{ 'btn-warning': submitButtonText === 'Put','btn-danger': submitButtonText === 'Delete', 'btn-success': submitButtonText === 'Post' }">{{ submitButtonText }}</button>
+      <button type="submit" class="btn btn-primary" :disabled="submitButtonText === 'Submit'"
+              :class="{ 'btn-warning': submitButtonText === 'Put','btn-danger': submitButtonText === 'Delete', 'btn-success': submitButtonText === 'Post' }">{{ submitButtonText }}</button>
       <hr>
     </form>
   </div>
