@@ -1,25 +1,29 @@
 <template>
-  <form  @submit.prevent="submitForm">
-    <div class="row">
-      <div class="col">
-        <label>Id</label>
-        <input type="text" class="form-control" id="id" v-model="gericht.id">
+  <div class ="container">
+    <form  @submit.prevent="submitForm">
+      <div class="row">
+        <div class="col">
+          <label>Id</label>
+          <input type="text" class="form-control" id="id" v-model="gericht.id" @input="checkInputs">
+        </div>
+        <div class="col">
+          <label>Name</label>
+          <input type="text" class="form-control" id="name" v-model="gericht.name" @input="checkInputs">
+        </div>
+        <div class="col">
+          <label>Beschreibung</label>
+          <input type="text" class="form-control" id="beschreibung" v-model="gericht.beschreibung" @input="checkInputs">
+        </div>
+        <div class="col">
+          <label>Preis</label>
+          <input type="text" class="form-control" id="preis" v-model="gericht.preis" @input="checkInputs">
+        </div>
       </div>
-           <div class="col">
-        <label>Name</label>
-        <input type="text" class="form-control" id="name" v-model="gericht.name">
-      </div>
-      <div class="col">
-        <label>Beschreibung</label>
-        <input type="text" class="form-control" id="beschreibung" v-model="gericht.beschreibung">
-      </div>
-      <div class="col">
-        <label>Preis</label>
-        <input type="text" class="form-control" id="preis" v-model="gericht.preis">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+      <hr>
+      <button type="submit" class="btn btn-primary" :class="{ 'btn-warning': submitButtonText === 'Put','btn-danger': submitButtonText === 'Delete', 'btn-success': submitButtonText === 'Post' }">{{ submitButtonText }}</button>
+      <hr>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -33,10 +37,23 @@ export default {
         name: '',
         beschreibung: '',
         preis: ''
-      }
+      },
+      allInputsEntered: false,
+      submitButtonText: 'Submit'
     }
   },
   methods: {
+    checkInputs () {
+      if (this.gericht.id && this.gericht.name && this.gericht.beschreibung && this.gericht.preis) {
+        this.submitButtonText = 'Put'
+      } else if (this.gericht.name && this.gericht.beschreibung && this.gericht.preis) {
+        this.submitButtonText = 'Post'
+      } else if (this.gericht.id && !this.gericht.name && !this.gericht.beschreibung && !this.gericht.preis) {
+        this.submitButtonText = 'Delete'
+      } else {
+        this.submitButtonText = 'Submit'
+      }
+    },
     async submitForm () {
       if (this.gericht.id && !this.gericht.name && !this.gericht.beschreibung && !this.gericht.preis) {
         try {
