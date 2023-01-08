@@ -30,7 +30,7 @@ export default {
     return { gerichte: [] }
   },
   methods: {
-    getGerichte () {
+    async getGerichte () {
       GerichtService.getGerichte().then((response) => {
         this.gerichte = response.data
       })
