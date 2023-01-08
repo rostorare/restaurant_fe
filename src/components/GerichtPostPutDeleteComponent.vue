@@ -1,9 +1,11 @@
 <template>
+  <!-- contains inputform for the gerichte -->
   <div class ="container">
     <form  @submit.prevent="submitForm">
       <div class="row">
         <div class="col">
           <label>Id</label>
+          <!-- checkInputs checks if there is a value written inside the field-->
           <input type="text" class="form-control" id="id" v-model="gericht.id" @input="checkInputs">
         </div>
         <div class="col">
@@ -20,6 +22,7 @@
         </div>
       </div>
       <hr>
+      <!-- based on checkinputs () the text changes, based on text the color of the button changes-->
       <button type="submit" class="btn btn-primary" :disabled="submitButtonText === 'Submit'"
               :class="{ 'btn-warning': submitButtonText === 'Put','btn-danger': submitButtonText === 'Delete', 'btn-success': submitButtonText === 'Post' }">{{ submitButtonText }}</button>
       <hr>
@@ -44,18 +47,24 @@ export default {
     }
   },
   methods: {
+    // changes the text of submitbutton
     checkInputs () {
+      // if all fields have values
       if (this.gericht.id && this.gericht.name && this.gericht.beschreibung && this.gericht.preis) {
         this.submitButtonText = 'Put'
+        // if all fields except Id have values
       } else if (this.gericht.name && this.gericht.beschreibung && this.gericht.preis) {
         this.submitButtonText = 'Post'
+        // if only id has a value
       } else if (this.gericht.id && !this.gericht.name && !this.gericht.beschreibung && !this.gericht.preis) {
         this.submitButtonText = 'Delete'
       } else {
         this.submitButtonText = 'Submit'
       }
     },
+    // submits the Form, based on the Text of the submitButton
     async submitForm () {
+      // submits delete
       if (this.gericht.id && !this.gericht.name && !this.gericht.beschreibung && !this.gericht.preis) {
         try {
           const response = await axios.delete('http://localhost:8080/api/v1/gerichte/' + this.gericht.id)
@@ -64,6 +73,7 @@ export default {
           console.error(error)
         }
       }
+      // submits post
       if (this.gericht.id === '') {
         try {
           const response = await axios.post('http://localhost:8080/api/v1/gerichte', this.gericht)
@@ -72,6 +82,7 @@ export default {
           console.error(error)
         }
       } else {
+        // submit put
         try {
           const response = await axios.put('http://localhost:8080/api/v1/gerichte/' + this.gericht.id, this.gericht)
           console.log(response.data)

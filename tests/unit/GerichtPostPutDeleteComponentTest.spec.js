@@ -6,7 +6,6 @@ describe('GerichtPostPutDeleteComponent', () => {
     // Arrange
     const wrapper = shallowMount(GerichtPostPutDeleteComponent)
     const gericht = {
-      id: '1',
       name: 'Test Gericht',
       beschreibung: 'This is a test gericht',
       preis: '9.99'
@@ -14,9 +13,9 @@ describe('GerichtPostPutDeleteComponent', () => {
     wrapper.setData({ gericht })
 
     // Act
-    wrapper.find('form').trigger('submit.prevent')
+    wrapper.find('form').trigger('submit')
 
     // Assert
-    expect(wrapper.vm.gericht).to.deep.equal(gericht)
+    expect(wrapper.vm.gericht).toEqual(gericht)
   })
 })
