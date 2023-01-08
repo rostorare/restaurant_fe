@@ -29,7 +29,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
 ### How to use
 ```
 Navigate on top of the site,
@@ -46,4 +45,14 @@ The Submit Button only works when the fields are filled out correctly
 ```
 - i have Tests under the folder tests/FailedTests, these were supposed to be unit tests but for the love
 of everything i cant find out why it cant use an import statement outside a module...
+```
+### Additional Info
+```
+The port is hardcoded to 3000 
+changing it is not recommended since i also hardcoded the requests sorry.
+```
+### Idea and implementaion
+```
+Idea was to have a system which can reserve tables and display it. 
+couldnt implement it in time because i understimated the tests. 
 ```
