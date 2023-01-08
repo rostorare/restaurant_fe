@@ -10,6 +10,7 @@
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "test": "babel-node node_modules/.bin/jest",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -22,8 +23,10 @@
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-env": "^7.20.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
